@@ -1,0 +1,68 @@
+[
+  {
+    "id": 13,
+    "title": "📢 Exciting News! The Mochwanaesi Foundation has officially opened applications for 2025!🚀",
+    "excerpt": "If you’re passionate about education and looking for support to achieve your dreams, this is your chance! 🌟 We’re here to help students from disadvantaged communities unlock their full potential. 💡\r\n\r\nHere’s the application link : https://docs.google.com/forms/d/e/1FAIpQLSfK7pgmcxrdCpvWB1A0gIwqYrqe_mKgfRaiJGq0yTz768M1dA/viewform?vc=0&c=0&w=1&flr=0&usp=mail_form_link\r\n\r\n📅 Applications close on 18 October 2024 – don’t miss out!\r\n\r\nSpread the word and apply now! #MochwanaesiFoundation #EducationForAll",
+    "category": "Programs",
+    "date": "2025-11-16T14:01:45.448541",
+    "image_url": "/static/images/uploads/announcement_20251116_140145_WhatsApp-Image-2024-09-29-at-21.31.52_35d8ddac.jpg",
+    "featured": true
+  },
+  {
+    "id": 12,
+    "title": "test1",
+    "excerpt": "first test",
+    "category": "Programs",
+    "date": "2025-11-16T06:17:58.121353",
+    "image_url": "/static/images/uploads/announcement_20251116_061758_Screenshot_2025-07-18_193109.png",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "Test Announcement",
+    "excerpt": "This is a test announcement to verify the admin panel works correctly.",
+    "category": "News",
+    "date": "2025-11-16T06:07:53.958833",
+    "image_url": "/static/images/announcements/default.jpg",
+    "featured": true
+  },
+  {
+    "id": 10,
+    "title": "Looking for volonters",
+    "excerpt": "anything",
+    "category": "Volunteers",
+    "date": "2025-11-16T06:04:03.057625",
+    "image_url": "/static/images/uploads/announcement_20251116_060403_students-at-school.jpg",
+    "featured": true
+  },
+  {
+    "id": "ann-001",
+    "title": "New Mentorship Program Launch for 2025",
+    "excerpt": "We're excited to announce the launch of our expanded mentorship program, connecting 100 new students with industry professionals across South Africa.",
+    "content": "Our foundation is proud to announce the launch of our expanded mentorship program for 2025. This initiative will connect 100 students from underserved communities with experienced professionals in various industries including technology, finance, healthcare, and education. The program runs for 12 months and includes monthly one-on-one sessions, skills workshops, and networking events.",
+    "category": "Programs",
+    "date": "2025-01-15T09:00:00Z",
+    "image_url": "/static/images/announcements/mentorship-launch.jpg",
+    "featured": true
+  },
+  {
+    "id": "ann-002",
+    "title": "Annual Scholarship Gala Raises R2.5 Million",
+    "excerpt": "Our annual scholarship gala was a tremendous success, raising R2.5 million to support 50 students pursuing higher education in 2025.",
+    "content": "The 10th Annual Scholarship Gala held at the Sandton Convention Centre was our most successful fundraising event to date. Thanks to the generosity of our donors, corporate sponsors, and community partners, we raised R2.5 million. These funds will provide full scholarships to 50 deserving students from disadvantaged backgrounds to pursue degrees at top South African universities.",
+    "category": "Events",
+    "date": "2025-01-10T18:00:00Z",
+    "image_url": "/static/images/announcements/scholarship-gala.jpg",
+    "featured": true
+  },
+  {
+    "id": "ann-003",
+    "title": "Student Success Story: Thabo Graduates with Engineering Degree",
+    "excerpt": "Thabo Mokoena, one of our first scholarship recipients, has graduated with honors from the University of Cape Town with a degree in Mechanical Engineering.",
+    "content": "We're incredibly proud to share that Thabo Mokoena, who joined our program in 2020, has graduated with honors from UCT. Thabo grew up in Soweto and faced numerous challenges, but with the support of our mentorship program and scholarship, he excelled academically. He has already secured a position at a leading engineering firm in Johannesburg.",
+    "category": "Success Stories",
+    "date": "2024-12-20T10:00:00Z",
+    "image_url": "/static/images/announcements/thabo-graduation.jpg",
+    "featured": false
+  }
+]

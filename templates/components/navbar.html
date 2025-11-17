@@ -1,0 +1,66 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Logo/Brand -->
+        <div class="navbar-brand">
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <img src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Mochwanaesi Foundation Logo"
+                    class="navbar-logo">
+                <span class="brand-text">Mochwanaesi Foundation</span>
+            </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <div class="navbar-links">
+            <a href="{{ url_for('index') }}" class="nav-link {% if current_page == 'home' %}active{% endif %}">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link {% if current_page == 'about' %}active{% endif %}">About
+                Us</a>
+            <a href="{{ url_for('programs') }}"
+                class="nav-link {% if current_page == 'programs' %}active{% endif %}">Our Programs</a>
+            <a href="{{ url_for('staff') }}" class="nav-link {% if current_page == 'staff' %}active{% endif %}">Our
+                Staff</a>
+            <a href="{{ url_for('announcements') }}"
+                class="nav-link {% if current_page == 'announcements' %}active{% endif %}">Announcements</a>
+            <a href="{{ url_for('contact') }}"
+                class="nav-link {% if current_page == 'contact' %}active{% endif %}">Contact Us</a>
+        </div>
+
+        <!-- Get Involved CTA Button -->
+        <div class="navbar-cta">
+            <a href="{{ url_for('contact') }}" class="btn-primary">Get Involved</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+            <i data-lucide="menu"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">Menu</span>
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close mobile menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="{{ url_for('index') }}" class="mobile-nav-link {% if current_page == 'home' %}active{% endif %}"
+                onclick="closeMobileMenu()">Home</a>
+            <a href="{{ url_for('about') }}" class="mobile-nav-link {% if current_page == 'about' %}active{% endif %}"
+                onclick="closeMobileMenu()">About Us</a>
+            <a href="{{ url_for('programs') }}"
+                class="mobile-nav-link {% if current_page == 'programs' %}active{% endif %}"
+                onclick="closeMobileMenu()">Our Programs</a>
+            <a href="{{ url_for('staff') }}" class="mobile-nav-link {% if current_page == 'staff' %}active{% endif %}"
+                onclick="closeMobileMenu()">Our Staff</a>
+            <a href="{{ url_for('announcements') }}"
+                class="mobile-nav-link {% if current_page == 'announcements' %}active{% endif %}"
+                onclick="closeMobileMenu()">Announcements</a>
+            <a href="{{ url_for('contact') }}"
+                class="mobile-nav-link {% if current_page == 'contact' %}active{% endif %}"
+                onclick="closeMobileMenu()">Contact Us</a>
+            <a href="{{ url_for('contact') }}" class="btn-primary mobile-cta" onclick="closeMobileMenu()">Get
+                Involved</a>
+        </div>
+    </div>
+</nav>

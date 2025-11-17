@@ -1,0 +1,7 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#fed7aa"/>
+  <rect x="50" y="50" width="700" height="350" rx="10" fill="#ea580c"/>
+  <text x="50%" y="45%" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Academic Success</text>
+  <text x="50%" y="52%" font-family="Arial, sans-serif" font-size="20" fill="#fed7aa" text-anchor="middle" dominant-baseline="middle">95% Pass Rate Achieved</text>
+  <text x="50%" y="90%" font-family="Arial, sans-serif" font-size="14" fill="#7c2d12" text-anchor="middle" dominant-baseline="middle">800 x 450</text>
+</svg>

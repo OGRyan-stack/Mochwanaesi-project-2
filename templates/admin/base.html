@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %} - Mochwanaesi Foundation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="admin-body">
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Panel</h2>
+            <p>Mochwanaesi Foundation</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('admin_dashboard') }}"
+                class="nav-item {% if request.endpoint == 'admin_dashboard' %}active{% endif %}">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('admin_announcements') }}"
+                class="nav-item {% if 'announcement' in request.endpoint %}active{% endif %}">
+                <i data-lucide="megaphone"></i>
+                <span>Announcements</span>
+            </a>
+
+            <a href="{{ url_for('admin_staff') }}"
+                class="nav-item {% if 'staff' in request.endpoint and 'admin' in request.endpoint %}active{% endif %}">
+                <i data-lucide="users"></i>
+                <span>Staff</span>
+            </a>
+
+            <a href="{{ url_for('admin_programs') }}"
+                class="nav-item {% if 'admin_programs' in request.endpoint or 'admin_edit_program' in request.endpoint %}active{% endif %}">
+                <i data-lucide="layout-grid"></i>
+                <span>Programs</span>
+            </a>
+
+            <a href="{{ url_for('admin_images') }}"
+                class="nav-item {% if request.endpoint == 'admin_images' %}active{% endif %}">
+                <i data-lucide="image"></i>
+                <span>All Images</span>
+            </a>
+
+            <div class="nav-submenu">
+                <a href="{{ url_for('admin_home_images') }}"
+                    class="nav-item nav-subitem {% if request.endpoint == 'admin_home_images' %}active{% endif %}">
+                    <i data-lucide="home"></i>
+                    <span>Home Page</span>
+                </a>
+
+                <a href="{{ url_for('admin_about_images') }}"
+                    class="nav-item nav-subitem {% if request.endpoint == 'admin_about_images' %}active{% endif %}">
+                    <i data-lucide="info"></i>
+                    <span>About Us</span>
+                </a>
+
+                <a href="{{ url_for('admin_programs_images') }}"
+                    class="nav-item nav-subitem {% if request.endpoint == 'admin_programs_images' %}active{% endif %}">
+                    <i data-lucide="book-open"></i>
+                    <span>Our Programs</span>
+                </a>
+            </div>
+
+            <div class="nav-divider"></div>
+
+            <a href="{{ url_for('index') }}" class="nav-item" target="_blank">
+                <i data-lucide="external-link"></i>
+                <span>View Website</span>
+            </a>
+
+            <a href="{{ url_for('admin_logout') }}" class="nav-item nav-item-danger">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Logged in as</p>
+            <strong>{{ session.admin_username }}</strong>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                <i
+                    data-lucide="{% if category == 'success' %}check-circle{% elif category == 'error' %}x-circle{% else %}info{% endif %}"></i>
+                <span>{{ message }}</span>
+                <button class="alert-close" onclick="this.parentElement.remove()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Page Content -->
+        <div class="admin-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Auto-hide flash messages after 5 seconds
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 300);
+            });
+        }, 5000);
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

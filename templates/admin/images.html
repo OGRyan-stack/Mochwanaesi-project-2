@@ -1,0 +1,130 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Manage Images{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div>
+        <h1>Image Gallery</h1>
+        <p>Upload and manage images</p>
+    </div>
+    <button onclick="document.getElementById('upload-form').style.display='block'" class="btn-primary">
+        <i data-lucide="upload"></i>
+        Upload Image
+    </button>
+</div>
+
+<!-- Page-Specific Image Management -->
+<div class="page-images-section">
+    <h2>Manage Page Images</h2>
+    <div class="page-images-grid">
+        <a href="{{ url_for('admin_home_images') }}" class="page-image-card">
+            <i data-lucide="home"></i>
+            <h3>Home Page</h3>
+            <p>Manage hero and home page images</p>
+        </a>
+
+        <a href="{{ url_for('admin_about_images') }}" class="page-image-card">
+            <i data-lucide="info"></i>
+            <h3>About Us</h3>
+            <p>Manage about page images</p>
+        </a>
+
+        <a href="{{ url_for('admin_programs_images') }}" class="page-image-card">
+            <i data-lucide="book-open"></i>
+            <h3>Our Programs</h3>
+            <p>Manage program images</p>
+        </a>
+    </div>
+</div>
+
+<div style="margin: var(--spacing-6) 0; border-top: 2px solid var(--gray-200);"></div>
+
+<h2>All Uploaded Images</h2>
+
+<!-- Upload Form (Hidden by default) -->
+<div id="upload-form" class="upload-form" style="display: none;">
+    <div class="upload-card">
+        <div class="upload-header">
+            <h3>Upload New Image</h3>
+            <button onclick="document.getElementById('upload-form').style.display='none'" class="btn-icon">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <form method="POST" action="{{ url_for('admin_upload_image') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <small>Allowed formats: PNG, JPG, JPEG, GIF, WEBP (Max 16MB)</small>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i data-lucide="upload"></i>
+                    Upload
+                </button>
+                <button type="button" onclick="document.getElementById('upload-form').style.display='none'"
+                    class="btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Images Grid -->
+<div class="images-grid">
+    {% for image in images %}
+    <div class="image-card">
+        <div class="image-preview">
+            <img src="{{ image.url }}" alt="{{ image.filename }}">
+        </div>
+        <div class="image-info">
+            <p class="image-filename" title="{{ image.filename }}">{{ image.filename }}</p>
+            <p class="image-meta">
+                <span>{{ (image.size / 1024) | round(1) }} KB</span>
+                <span>{{ image.modified }}</span>
+            </p>
+        </div>
+        <div class="image-actions">
+            <button onclick="copyToClipboard('{{ image.url }}')" class="btn-icon btn-icon-primary" title="Copy URL">
+                <i data-lucide="copy"></i>
+            </button>
+            <form method="POST" action="{{ url_for('admin_delete_image', filename=image.filename) }}"
+                style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                <button type="submit" class="btn-icon btn-icon-danger" title="Delete">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i data-lucide="image" style="width: 64px; height: 64px; color: var(--gray-400);"></i>
+        <h3>No images uploaded yet</h3>
+        <p>Upload your first image to get started</p>
+        <button onclick="document.getElementById('upload-form').style.display='block'" class="btn-primary">
+            <i data-lucide="upload"></i>
+            Upload Image
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            // Show temporary success message
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.innerHTML = '<i data-lucide="check-circle"></i><span>URL copied to clipboard!</span>';
+            document.querySelector('.admin-content').insertBefore(alert, document.querySelector('.admin-content').firstChild);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 300);
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

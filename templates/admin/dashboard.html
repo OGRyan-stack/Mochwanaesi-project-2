@@ -1,0 +1,87 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>Dashboard</h1>
+    <p>Welcome back, {{ session.admin_username }}!</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-blue">
+            <i data-lucide="megaphone"></i>
+        </div>
+        <div class="stat-content">
+            <h3>{{ stats.announcements }}</h3>
+            <p>Total Announcements</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-green">
+            <i data-lucide="users"></i>
+        </div>
+        <div class="stat-content">
+            <h3>{{ stats.staff }}</h3>
+            <p>Total Staff Members</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-purple">
+            <i data-lucide="award"></i>
+        </div>
+        <div class="stat-content">
+            <h3>{{ stats.leadership }}</h3>
+            <p>Leadership Team</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-orange">
+            <i data-lucide="briefcase"></i>
+        </div>
+        <div class="stat-content">
+            <h3>{{ stats.program_staff }}</h3>
+            <p>Program Staff</p>
+        </div>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <h2>Quick Actions</h2>
+    <div class="action-grid">
+        <a href="{{ url_for('admin_add_announcement') }}" class="action-card">
+            <i data-lucide="plus-circle"></i>
+            <h3>Add Announcement</h3>
+            <p>Create a new announcement</p>
+        </a>
+
+        <a href="{{ url_for('admin_add_staff') }}" class="action-card">
+            <i data-lucide="user-plus"></i>
+            <h3>Add Staff Member</h3>
+            <p>Add a new team member</p>
+        </a>
+
+        <a href="{{ url_for('admin_programs') }}" class="action-card">
+            <i data-lucide="layout-grid"></i>
+            <h3>Manage Programs</h3>
+            <p>Update program images</p>
+        </a>
+
+        <a href="{{ url_for('admin_images') }}" class="action-card">
+            <i data-lucide="image"></i>
+            <h3>Manage Images</h3>
+            <p>Upload and manage images</p>
+        </a>
+
+        <a href="{{ url_for('index') }}" class="action-card" target="_blank">
+            <i data-lucide="external-link"></i>
+            <h3>View Website</h3>
+            <p>Open the public website</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Our Staff - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% set title = "Meet Our Team" %}
+{% set subtitle = "Dedicated professionals committed to empowering youth through education" %}
+{% include 'components/hero.html' with context %}
+
+<!-- Team Values Section -->
+<section class="team-values-section">
+    <div class="container">
+        <h2 class="section-title">Our Team Values</h2>
+        <div class="values-grid">
+            <!-- Passionate -->
+            <div class="value-card">
+                <div class="value-icon value-icon-red">
+                    <i data-lucide="heart"></i>
+                </div>
+                <h3 class="value-title">Passionate</h3>
+                <p class="value-description">We are deeply committed to making a difference in the lives of young people
+                    and believe in the transformative power of education.</p>
+            </div>
+
+            <!-- Experienced -->
+            <div class="value-card">
+                <div class="value-icon value-icon-blue">
+                    <i data-lucide="award"></i>
+                </div>
+                <h3 class="value-title">Experienced</h3>
+                <p class="value-description">Our team brings decades of combined experience in education, youth
+                    development, and program management.</p>
+            </div>
+
+            <!-- Dedicated -->
+            <div class="value-card">
+                <div class="value-icon value-icon-green">
+                    <i data-lucide="target"></i>
+                </div>
+                <h3 class="value-title">Dedicated</h3>
+                <p class="value-description">We go above and beyond to ensure every student receives the support and
+                    guidance they need to succeed.</p>
+            </div>
+
+            <!-- Professional -->
+            <div class="value-card">
+                <div class="value-icon value-icon-purple">
+                    <i data-lucide="briefcase"></i>
+                </div>
+                <h3 class="value-title">Professional</h3>
+                <p class="value-description">We maintain the highest standards of professionalism, accountability, and
+                    ethical conduct in all our work.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leadership Team Section -->
+<section class="leadership-section">
+    <div class="container">
+        <h2 class="section-title">Leadership Team</h2>
+        <p class="section-subtitle">Meet the visionary leaders guiding our mission</p>
+
+        <div class="leadership-grid">
+            {% for member in leadership_team %}
+            <div class="leadership-card">
+                <div class="leadership-image">
+                    <img src="{{ member.image_url }}" alt="{{ member.name }}">
+                    <div class="leadership-overlay"></div>
+                </div>
+                <div class="leadership-content">
+                    <h3 class="leadership-name">{{ member.name }}</h3>
+                    <p class="leadership-title">{{ member.title }}</p>
+                    <p class="leadership-bio">{{ member.bio }}</p>
+
+                    <div class="leadership-contact">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="contact-link contact-link-red">
+                            <i data-lucide="mail"></i>
+                            <span>{{ member.email }}</span>
+                        </a>
+                        {% endif %}
+
+                        {% if member.linkedin_url %}
+                        <a href="{{ member.linkedin_url }}" class="contact-link contact-link-red" target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="linkedin"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Program Staff Section -->
+<section class="program-staff-section">
+    <div class="container">
+        <h2 class="section-title">Program Staff</h2>
+        <p class="section-subtitle">The dedicated team members who work directly with our students</p>
+
+        <div class="staff-grid">
+            {% for member in program_staff %}
+            <div class="staff-card">
+                <div class="staff-image-circle">
+                    <img src="{{ member.image_url }}" alt="{{ member.name }}">
+                </div>
+                <h3 class="staff-name">{{ member.name }}</h3>
+                <p class="staff-role">{{ member.title }}</p>
+                <p class="staff-department">{{ member.department }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Join Our Team CTA -->
+{% set heading = "Join Our Team" %}
+{% set description = "We're always looking for passionate individuals who want to make a difference in the lives of
+young people. Explore our current opportunities and become part of our mission." %}
+{% set buttons = [
+{'text': 'View Open Positions', 'url': '/contact', 'style': 'primary'}
+] %}
+{% include 'components/cta.html' with context %}
+
+{% endblock %}

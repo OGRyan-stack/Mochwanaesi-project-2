@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Slideshow Section -->
+<section class="hero-slideshow">
+    <div class="slideshow-container">
+        {% if hero_images %}
+        {% for image in hero_images %}
+        <div class="slide {% if loop.first %}active{% endif %}">
+            <img src="{{ image.url }}" alt="Hero image {{ loop.index }}">
+        </div>
+        {% endfor %}
+        {% else %}
+        <!-- Fallback slide if no images uploaded -->
+        <div class="slide active">
+            <img src="/static/images/students-at-school.jpg" alt="Students at school">
+        </div>
+        {% endif %}
+
+        <!-- Blur overlay -->
+        <div class="slideshow-overlay"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-slideshow-content">
+        <div class="hero-slideshow-text">
+            <h1 class="foundation-name">Mochwanaesi Foundation</h1>
+            <h2 class="hero-slideshow-title">Building Future Leaders Through <span class="text-accent">Education</span>
+            </h2>
+            <p class="hero-slideshow-subtitle">
+                Empowering disadvantaged high school learners with mentorship, academic support, and career guidance
+            </p>
+            <div class="hero-slideshow-buttons">
+                <a href="{{ url_for('programs') }}" class="btn-primary btn-lg">
+                    Explore Programs
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn-secondary btn-lg">Get Involved</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slideshow Controls -->
+    <div class="slideshow-controls">
+        <button class="slideshow-control prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <button class="slideshow-control next" onclick="changeSlide(1)" aria-label="Next slide">
+            <i data-lucide="chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Slideshow Indicators -->
+    <div class="slideshow-indicators">
+        <button class="indicator active" onclick="goToSlide(0)" aria-label="Go to slide 1"></button>
+        <button class="indicator" onclick="goToSlide(1)" aria-label="Go to slide 2"></button>
+        <button class="indicator" onclick="goToSlide(2)" aria-label="Go to slide 3"></button>
+        <button class="indicator" onclick="goToSlide(3)" aria-label="Go to slide 4"></button>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i data-lucide="users"></i>
+            </div>
+            <h3 class="stat-number">500+</h3>
+            <p class="stat-label">Students Mentored</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i data-lucide="trending-up"></i>
+            </div>
+            <h3 class="stat-number">85%</h3>
+            <p class="stat-label">Success Rate</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i data-lucide="award"></i>
+            </div>
+            <h3 class="stat-number">200+</h3>
+            <p class="stat-label">Scholarships Awarded</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i data-lucide="calendar"></i>
+            </div>
+            <h3 class="stat-number">10+</h3>
+            <p class="stat-label">Years of Impact</p>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+    <div class="mission-container">
+        <h2 class="section-heading">Our Mission</h2>
+        <p class="section-subtitle">We are committed to transforming lives through education and empowerment</p>
+
+        <div class="mission-cards">
+            <div class="card card-mission">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3 class="card-title">Empowerment</h3>
+                    <p class="card-description">
+                        We empower students with the knowledge, skills, and confidence they need to overcome
+                        challenges and achieve their dreams.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-mission">
+                <div class="card-content">
+                    <div class="card-icon icon-gray">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3 class="card-title">Community</h3>
+                    <p class="card-description">
+                        We build strong communities by connecting students, mentors, and supporters who share a
+                        commitment to educational excellence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-mission">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3 class="card-title">Growth</h3>
+                    <p class="card-description">
+                        We foster continuous growth through personalized support, mentorship, and opportunities that
+                        help students reach their full potential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programs Overview Section -->
+<section class="programs-section">
+    <div class="programs-container">
+        <h2 class="section-heading">Our Programs</h2>
+        <p class="section-subtitle">Comprehensive support to help students succeed academically and professionally</p>
+
+        <div class="programs-grid">
+            {% for program in programs %}
+            <div class="card card-program">
+                <div class="card-image">
+                    <img src="{{ program.image_url }}" alt="{{ program.name }}">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="{{ program.icon }}"></i>
+                    </div>
+                    <h3 class="card-title">{{ program.name }}</h3>
+                    <p class="card-description">
+                        {{ program.tagline }}
+                    </p>
+                    <a href="{{ url_for('programs') }}" class="card-link">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+{% set cta_data = {
+'heading': 'Join Us in Making a Difference',
+'description': 'Your support can transform lives and create opportunities for disadvantaged youth. Together, we can
+build a brighter future.',
+'buttons': [
+{'text': 'Become a Mentor', 'url': url_for('contact'), 'style': 'primary'},
+{'text': 'Donate Now', 'url': url_for('contact'), 'style': 'secondary'}
+],
+'cta_class': 'cta-dark'
+} %}
+{% include 'components/cta.html' with context %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/slideshow.js') }}"></script>
+{% endblock %}

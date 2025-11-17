@@ -1,0 +1,7 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#d1fae5"/>
+  <circle cx="200" cy="150" r="60" fill="#059669"/>
+  <rect x="140" y="220" width="120" height="150" rx="10" fill="#059669"/>
+  <text x="50%" y="85%" font-family="Arial, sans-serif" font-size="18" fill="#064e3b" text-anchor="middle" dominant-baseline="middle">Thandiwe Mabaso</text>
+  <text x="50%" y="92%" font-family="Arial, sans-serif" font-size="14" fill="#065f46" text-anchor="middle" dominant-baseline="middle">Operations Manager</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#ccfbf1"/>
+  <rect x="50" y="50" width="700" height="350" rx="10" fill="#14b8a6"/>
+  <text x="50%" y="45%" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Career Fair 2024</text>
+  <text x="50%" y="52%" font-family="Arial, sans-serif" font-size="20" fill="#99f6e4" text-anchor="middle" dominant-baseline="middle">75 Internships Offered</text>
+  <text x="50%" y="90%" font-family="Arial, sans-serif" font-size="14" fill="#134e4a" text-anchor="middle" dominant-baseline="middle">800 x 450</text>
+</svg>

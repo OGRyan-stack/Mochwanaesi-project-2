@@ -1,0 +1,68 @@
+<div class="card {% if style %}card-{{ style }}{% endif %}">
+    {% if image_url %}
+    <div class="card-image">
+        <img src="{{ image_url }}" alt="{{ title }}">
+        {% if badge %}
+        <span class="card-badge">{{ badge }}</span>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="card-content">
+        {% if icon %}
+        <div class="card-icon">
+            <i data-lucide="{{ icon }}"></i>
+        </div>
+        {% endif %}
+
+        {% if badge and not image_url %}
+        <span class="card-badge-inline">{{ badge }}</span>
+        {% endif %}
+
+        <h3 class="card-title">{{ title }}</h3>
+
+        {% if description %}
+        <p class="card-description">{{ description }}</p>
+        {% endif %}
+
+        {% if bio %}
+        <p class="card-bio">{{ bio }}</p>
+        {% endif %}
+
+        {% if features %}
+        <ul class="card-features">
+            {% for feature in features %}
+            <li>
+                <i data-lucide="check" class="feature-check"></i>
+                <span>{{ feature }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if email or linkedin_url %}
+        <div class="card-contact">
+            {% if email %}
+            <a href="mailto:{{ email }}" class="contact-link">
+                <i data-lucide="mail"></i>
+                <span>{{ email }}</span>
+            </a>
+            {% endif %}
+
+            {% if linkedin_url %}
+            <a href="{{ linkedin_url }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if link_url and link_text %}
+        <a href="{{ link_url }}" class="card-link">
+            {{ link_text }}
+            <i data-lucide="arrow-right"></i>
+        </a>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Mochwanaesi Foundation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="admin-login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Mochwanaesi Foundation</h1>
+                <h2>Admin Panel</h2>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                <i data-lucide="{% if category == 'success' %}check-circle{% else %}alert-circle{% endif %}"></i>
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        <i data-lucide="user"></i>
+                        Username
+                    </label>
+                    <input type="text" id="username" name="username" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i data-lucide="lock"></i>
+                        Password
+                    </label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block">
+                    <i data-lucide="log-in"></i>
+                    Login
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <a href="{{ url_for('index') }}">
+                    <i data-lucide="arrow-left"></i>
+                    Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

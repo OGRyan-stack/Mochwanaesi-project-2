@@ -1,0 +1,50 @@
+[
+  {
+    "id": "prog-001",
+    "name": "Mentorship Program",
+    "tagline": "Connecting Youth with Industry Leaders",
+    "description": "Our flagship mentorship program pairs students from underserved communities with experienced professionals across various industries. Through one-on-one guidance, mentors help students develop career skills, build confidence, and navigate their educational journey. The program includes monthly meetings, skills workshops, networking events, and ongoing support throughout the academic year.",
+    "features": [
+      "One-on-one mentorship with industry professionals",
+      "Monthly skills development workshops",
+      "Networking opportunities with business leaders",
+      "Career planning and goal-setting sessions",
+      "12-month program duration with ongoing support"
+    ],
+    "image_url": "/static/images/programs/program_20251116_080556_Screenshot_2025-08-27_212416.png",
+    "image_filename": "mentorship",
+    "icon": "users"
+  },
+  {
+    "id": "prog-002",
+    "name": "Academic Support",
+    "tagline": "Building Strong Foundations for Success",
+    "description": "Our academic support program provides comprehensive tutoring and study skills development to help students excel in their studies. We offer subject-specific tutoring in mathematics, science, and languages, along with study skills workshops, exam preparation sessions, and personalized learning plans. Our qualified tutors work with students to identify learning gaps and build confidence in their academic abilities.",
+    "features": [
+      "Subject-specific tutoring in core subjects",
+      "Small group and one-on-one sessions",
+      "Study skills and time management workshops",
+      "Exam preparation and test-taking strategies",
+      "Progress tracking and personalized learning plans"
+    ],
+    "image_url": "/static/images/programs/program_20251116_072000_Screenshot_2025-09-28_193503.png",
+    "image_filename": "academic",
+    "icon": "book-open"
+  },
+  {
+    "id": "prog-003",
+    "name": "Career Guidance",
+    "tagline": "Preparing Students for Future Careers",
+    "description": "Our career guidance program helps students explore career options, develop professional skills, and prepare for the workplace. Through career assessments, workplace visits, internship placements, and job readiness training, we equip students with the tools they need to succeed in their chosen fields. Our career counselors provide personalized guidance to help each student identify their strengths and pursue meaningful career paths.",
+    "features": [
+      "Career assessments and exploration activities",
+      "Resume writing and interview preparation",
+      "Internship and job placement assistance",
+      "Workplace visits and industry exposure",
+      "Hello"
+    ],
+    "image_url": "/static/images/programs/Career_Guidance.png",
+    "image_filename": "career",
+    "icon": "briefcase"
+  }
+]

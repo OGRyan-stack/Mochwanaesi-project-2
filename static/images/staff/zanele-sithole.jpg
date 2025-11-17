@@ -1,0 +1,6 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#fef3c7"/>
+  <circle cx="150" cy="150" r="80" fill="#f59e0b"/>
+  <text x="50%" y="85%" font-family="Arial, sans-serif" font-size="16" fill="#78350f" text-anchor="middle" dominant-baseline="middle">Zanele Sithole</text>
+  <text x="50%" y="92%" font-family="Arial, sans-serif" font-size="12" fill="#92400e" text-anchor="middle" dominant-baseline="middle">Career Counselor</text>
+</svg>

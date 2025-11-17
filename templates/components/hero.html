@@ -1,0 +1,35 @@
+<section class="hero {% if hero_class %}{{ hero_class }}{% endif %}">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                {% if accent_word and title %}
+                {{ title.replace(accent_word, '<span class="text-accent">' + accent_word + '</span>') | safe }}
+                {% else %}
+                {{ title }}
+                {% endif %}
+            </h1>
+
+            {% if subtitle %}
+            <p class="hero-subtitle">{{ subtitle }}</p>
+            {% endif %}
+
+            {% if show_cta and (cta_primary or cta_secondary) %}
+            <div class="hero-cta">
+                {% if cta_primary %}
+                <a href="{{ cta_primary.url }}" class="btn-primary">{{ cta_primary.text }}</a>
+                {% endif %}
+
+                {% if cta_secondary %}
+                <a href="{{ cta_secondary.url }}" class="btn-secondary">{{ cta_secondary.text }}</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        {% if image_url %}
+        <div class="hero-image">
+            <img src="{{ image_url }}" alt="{{ title }}">
+        </div>
+        {% endif %}
+    </div>
+</section>

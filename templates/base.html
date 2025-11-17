@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mochwanaesi Foundation - Building Future Leaders Through Education">
+    <parameter name="newStr">
+        <meta name="description" content="Mochwanaesi Foundation - Building Future Leaders Through Education">
+        <title>{% block title %}Mochwanaesi Foundation{% endblock %}</title>
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/slideshow.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+        <!-- Lucide Icons CDN -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+
+    <!-- JavaScript Files -->
+    <script src="{{ url_for('static', filename='js/toast.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
+    {% block scripts %}{% endblock %}
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

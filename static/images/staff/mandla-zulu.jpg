@@ -1,0 +1,6 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#fed7aa"/>
+  <circle cx="150" cy="150" r="80" fill="#ea580c"/>
+  <text x="50%" y="85%" font-family="Arial, sans-serif" font-size="16" fill="#7c2d12" text-anchor="middle" dominant-baseline="middle">Mandla Zulu</text>
+  <text x="50%" y="92%" font-family="Arial, sans-serif" font-size="12" fill="#9a3412" text-anchor="middle" dominant-baseline="middle">Scholarship Admin</text>
+</svg>

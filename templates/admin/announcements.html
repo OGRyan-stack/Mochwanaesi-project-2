@@ -1,0 +1,80 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Manage Announcements{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div>
+        <h1>Announcements</h1>
+        <p>Manage all announcements</p>
+    </div>
+    <a href="{{ url_for('admin_add_announcement') }}" class="btn-primary">
+        <i data-lucide="plus"></i>
+        Add New
+    </a>
+</div>
+
+<div class="table-container">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Featured</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for announcement in announcements %}
+            <tr>
+                <td>
+                    <img src="{{ announcement.image_url }}" alt="{{ announcement.title }}" class="table-image">
+                </td>
+                <td>
+                    <strong>{{ announcement.title }}</strong>
+                    <p class="table-excerpt">{{ announcement.excerpt[:80] }}...</p>
+                </td>
+                <td>
+                    <span class="badge badge-{{ announcement.category.lower().replace(' ', '-') }}">
+                        {{ announcement.category }}
+                    </span>
+                </td>
+                <td>{{ announcement.date[:10] }}</td>
+                <td>
+                    {% if announcement.featured %}
+                    <span class="badge badge-featured">Featured</span>
+                    {% else %}
+                    <span class="badge badge-gray">Regular</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{{ url_for('admin_edit_announcement', announcement_id=announcement.id) }}"
+                            class="btn-icon btn-icon-primary" title="Edit">
+                            <i data-lucide="edit"></i>
+                        </a>
+                        <form method="POST"
+                            action="{{ url_for('admin_delete_announcement', announcement_id=announcement.id) }}"
+                            style="display: inline;"
+                            onsubmit="return confirm('Are you sure you want to delete this announcement?');">
+                            <button type="submit" class="btn-icon btn-icon-danger" title="Delete">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">
+                    <p>No announcements found.</p>
+                    <a href="{{ url_for('admin_add_announcement') }}" class="btn-primary">Add First Announcement</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

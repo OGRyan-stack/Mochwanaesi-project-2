@@ -1,0 +1,74 @@
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Foundation Info Section -->
+        <div class="footer-column footer-brand">
+            <h3 class="footer-brand-name">Mochwanaesi Foundation</h3>
+            <p class="footer-text">
+                Empowering disadvantaged youth through education, mentorship, and career guidance to build tomorrow's
+                leaders.
+            </p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-column">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('programs') }}">Our Programs</a></li>
+                <li><a href="{{ url_for('staff') }}">Our Staff</a></li>
+                <li><a href="{{ url_for('announcements') }}">Announcements</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="footer-column">
+            <h3 class="footer-heading">Contact Info</h3>
+            <ul class="footer-contact">
+                <li>
+                    <i data-lucide="map-pin" class="footer-icon"></i>
+                    <span>South Africa</span>
+                </li>
+                <li>
+                    <i data-lucide="mail" class="footer-icon"></i>
+                    <span>info@mochwanaesifoundation.org.za</span>
+                </li>
+                <li>
+                    <i data-lucide="phone" class="footer-icon"></i>
+                    <span>+27 XX XXX XXXX</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="footer-column">
+            <h3 class="footer-heading">Follow Us</h3>
+            <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="facebook"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 Mochwanaesi Foundation. All rights reserved.</p>
+            <a href="{{ url_for('admin_login') }}" class="admin-login-link" title="Admin Login">
+                <i data-lucide="shield"></i>
+                <span>Admin</span>
+            </a>
+        </div>
+    </div>
+</footer>

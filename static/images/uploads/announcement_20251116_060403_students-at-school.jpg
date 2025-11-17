@@ -1,0 +1,12 @@
+<svg width="1280" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="600" fill="#dbeafe"/>
+  <rect x="100" y="100" width="1080" height="400" rx="15" fill="#2563eb"/>
+  <circle cx="400" cy="250" r="50" fill="#60a5fa"/>
+  <circle cx="640" cy="250" r="50" fill="#60a5fa"/>
+  <circle cx="880" cy="250" r="50" fill="#60a5fa"/>
+  <rect x="350" y="310" width="100" height="140" rx="10" fill="#60a5fa"/>
+  <rect x="590" y="310" width="100" height="140" rx="10" fill="#60a5fa"/>
+  <rect x="830" y="310" width="100" height="140" rx="10" fill="#60a5fa"/>
+  <text x="50%" y="88%" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Students at School</text>
+  <text x="50%" y="94%" font-family="Arial, sans-serif" font-size="16" fill="#bfdbfe" text-anchor="middle" dominant-baseline="middle">1280 x 600</text>
+</svg>

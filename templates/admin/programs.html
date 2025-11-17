@@ -1,0 +1,170 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Manage Programs - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>Manage Program Images</h1>
+    <p class="admin-subtitle">Upload images for each program. Changes will reflect on both the Programs page and Home
+        page.</p>
+    <div class="naming-guide">
+        <i data-lucide="lightbulb"></i>
+        <strong>Naming Tip:</strong> Use the program name in your filename for easy identification:
+        <br>
+        <code>"Mentorship Program.jpg"</code>, <code>"Academic Support.png"</code>, <code>"Career Guidance.jpg"</code>
+    </div>
+</div>
+
+<div class="admin-content">
+    <div class="programs-grid">
+        {% for program in programs %}
+        <div class="card program-card">
+            <div class="program-image-preview">
+                <img src="{{ program.image_url }}" alt="{{ program.name }}">
+            </div>
+            <div class="card-content">
+                <div class="program-icon-badge">
+                    <i data-lucide="{{ program.icon }}"></i>
+                </div>
+                <h3 class="program-name">{{ program.name }}</h3>
+                <p class="program-tagline">{{ program.tagline }}</p>
+                <p class="program-current-image">
+                    <strong>Current Image:</strong><br>
+                    <code>{{ program.image_url }}</code>
+                </p>
+                <a href="{{ url_for('admin_edit_program_image', program_id=program.id) }}"
+                    class="btn-primary btn-block">
+                    <i data-lucide="upload"></i>
+                    Change Image
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .program-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .program-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .program-image-preview {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: #f5f5f5;
+    }
+
+    .program-image-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .program-icon-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: #dc2626;
+        color: white;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+
+    .program-icon-badge i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .program-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+    }
+
+    .program-tagline {
+        color: #6b7280;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .program-current-image {
+        background: #f9fafb;
+        padding: 0.75rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        color: #4b5563;
+        margin-bottom: 1rem;
+        word-break: break-all;
+    }
+
+    .program-current-image code {
+        background: #e5e7eb;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.8rem;
+    }
+
+    .btn-block {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .btn-block i {
+        width: 18px;
+        height: 18px;
+    }
+
+    .naming-guide {
+        background: #fef3c7;
+        border: 2px solid #fbbf24;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin-top: 1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: #92400e;
+    }
+
+    .naming-guide i {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: #f59e0b;
+    }
+
+    .naming-guide code {
+        background: #fde68a;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        color: #78350f;
+        white-space: nowrap;
+    }
+</style>
+{% endblock %}

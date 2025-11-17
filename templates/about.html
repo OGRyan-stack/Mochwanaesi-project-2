@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% set hero_data = {
+'title': 'About Our Foundation',
+'accent_word': 'Foundation',
+'subtitle': 'Dedicated to empowering South African youth through education, mentorship, and community support since
+2013.',
+'show_cta': false,
+'hero_class': 'hero-about'
+} %}
+{% include 'components/hero.html' with context %}
+
+<!-- Story Section -->
+<section class="story-section">
+    <div class="story-container">
+        <div class="story-image">
+            <img src="/static/images/about/classroom.jpg" alt="Students in classroom">
+        </div>
+        <div class="story-content">
+            <h2 class="section-heading">Our Story</h2>
+            <p class="story-text">
+                Founded in 2013, Mochwanaesi Foundation was born from a simple yet powerful belief: every young
+                person deserves access to quality education and the support they need to succeed. What started as a
+                small mentorship program with just 50 students has grown into a comprehensive educational initiative
+                serving over 500 students annually across South Africa.
+            </p>
+            <p class="story-text">
+                Our journey began when a group of educators and community leaders recognized the significant barriers
+                facing talented youth in underserved communities. They saw students with incredible potential who lacked
+                access to resources, guidance, and opportunities. Determined to make a difference, they established our
+                foundation to bridge this gap.
+            </p>
+            <p class="story-text">
+                Over the past decade, we've expanded our programs to include academic support, career guidance, and
+                scholarship opportunities. We've built partnerships with schools, universities, and businesses to create
+                pathways to success for our students. Today, we're proud to have helped hundreds of young people achieve
+                their educational goals and build brighter futures for themselves and their communities.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Mission and Vision Cards -->
+<section class="mission-vision-section">
+    <div class="mission-vision-container">
+        <div class="card card-large card-mission-vision">
+            <div class="card-content">
+                <div class="card-icon icon-red">
+                    <i data-lucide="target"></i>
+                </div>
+                <h3 class="card-title">Our Mission</h3>
+                <p class="card-description">
+                    To empower South African youth from underserved communities by providing comprehensive educational
+                    support, mentorship, and resources that enable them to achieve academic excellence, develop
+                    essential life skills, and become leaders who create positive change in their communities.
+                </p>
+            </div>
+        </div>
+
+        <div class="card card-large card-mission-vision">
+            <div class="card-content">
+                <div class="card-icon icon-red">
+                    <i data-lucide="eye"></i>
+                </div>
+                <h3 class="card-title">Our Vision</h3>
+                <p class="card-description">
+                    A South Africa where every young person, regardless of their background or circumstances, has access
+                    to quality education and the support they need to unlock their full potential and contribute
+                    meaningfully to society.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="values-section">
+    <div class="values-container">
+        <h2 class="section-heading">Our Core Values</h2>
+        <p class="section-subtitle">The principles that guide everything we do</p>
+
+        <div class="values-grid">
+            <div class="card card-value">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3 class="card-title">Compassion</h3>
+                    <p class="card-description">
+                        We approach every student with empathy, understanding, and genuine care for their wellbeing and
+                        success.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-value">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <h3 class="card-title">Excellence</h3>
+                    <p class="card-description">
+                        We strive for the highest standards in our programs, services, and support to ensure the best
+                        outcomes for our students.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-value">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="card-title">Community</h3>
+                    <p class="card-description">
+                        We build strong, supportive networks that connect students, mentors, families, and partners in a
+                        shared mission.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-value">
+                <div class="card-content">
+                    <div class="card-icon icon-red">
+                        <i data-lucide="lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">Innovation</h3>
+                    <p class="card-description">
+                        We continuously seek new and better ways to serve our students and adapt to their evolving
+                        needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Preview Section -->
+<section class="team-preview-section">
+    <div class="team-preview-container">
+        <h2 class="section-heading">Meet Our Leadership Team</h2>
+        <p class="section-subtitle">Experienced professionals dedicated to transforming lives through education</p>
+
+        <div class="team-preview-grid">
+            {% for member in leadership_team %}
+            <div class="card card-team-preview">
+                <div class="card-image">
+                    <img src="{{ member.image_url }}" alt="{{ member.name }}">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ member.name }}</h3>
+                    <p class="card-subtitle">{{ member.title }}</p>
+                    <p class="card-description">
+                        {{ member.bio[:200] }}{% if member.bio|length > 200 %}...{% endif %}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center; margin-top: var(--spacing-6);">
+            <a href="{{ url_for('staff') }}" class="btn-primary">
+                View Full Team
+                <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Statistics Section -->
+<section class="impact-section">
+    <div class="impact-container">
+        <h2 class="section-heading">Our Impact</h2>
+        <p class="section-subtitle">Making a real difference in the lives of South African youth</p>
+
+        <div class="impact-stats">
+            <div class="impact-stat">
+                <div class="impact-icon">
+                    <i data-lucide="users"></i>
+                </div>
+                <h3 class="impact-number">500+</h3>
+                <p class="impact-label">Students Supported Annually</p>
+                <p class="impact-description">
+                    We provide comprehensive support to over 500 students each year through our mentorship, academic
+                    support, and career guidance programs.
+                </p>
+            </div>
+
+            <div class="impact-stat">
+                <div class="impact-icon">
+                    <i data-lucide="trending-up"></i>
+                </div>
+                <h3 class="impact-number">85%</h3>
+                <p class="impact-label">Success Rate</p>
+                <p class="impact-description">
+                    85% of our students successfully complete their programs and achieve their academic goals,
+                    demonstrating the effectiveness of our approach.
+                </p>
+            </div>
+
+            <div class="impact-stat">
+                <div class="impact-icon">
+                    <i data-lucide="calendar"></i>
+                </div>
+                <h3 class="impact-number">10+</h3>
+                <p class="impact-label">Years of Service</p>
+                <p class="impact-description">
+                    For over a decade, we've been committed to empowering youth and creating lasting change in
+                    communities across South Africa.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

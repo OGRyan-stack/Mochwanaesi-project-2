@@ -1,0 +1,21 @@
+<section class="cta-section {% if cta_class %}{{ cta_class }}{% endif %}">
+    <div class="cta-container">
+        <div class="cta-content">
+            {% if heading %}
+            <h2 class="cta-heading">{{ heading }}</h2>
+            {% endif %}
+
+            {% if description %}
+            <p class="cta-description">{{ description }}</p>
+            {% endif %}
+
+            {% if buttons %}
+            <div class="cta-buttons">
+                {% for button in buttons %}
+                <a href="{{ button.url }}" class="btn-{{ button.style }}">{{ button.text }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

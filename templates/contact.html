@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% include 'components/hero.html' with context %}
+{% set title = "Get In Touch" %}
+{% set accent_word = "Touch" %}
+{% set subtitle = "We'd love to hear from you. Reach out to learn more about our programs or get involved." %}
+
+<!-- Contact Information Cards -->
+<section class="contact-info-section">
+    <div class="container">
+        <div class="contact-info-grid">
+            <!-- Location Card -->
+            <div class="contact-info-card">
+                <div class="contact-icon contact-icon-red">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <h3>Location</h3>
+                <p>123 Education Street<br>Cape Town, 8001<br>South Africa</p>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-info-card">
+                <div class="contact-icon contact-icon-blue">
+                    <i data-lucide="mail"></i>
+                </div>
+                <h3>Email</h3>
+                <p><a href="mailto:info@educationfoundation.org">info@educationfoundation.org</a></p>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="contact-info-card">
+                <div class="contact-icon contact-icon-green">
+                    <i data-lucide="phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <p><a href="tel:+27123456789">+27 12 345 6789</a></p>
+            </div>
+
+            <!-- Office Hours Card -->
+            <div class="contact-info-card">
+                <div class="contact-icon contact-icon-purple">
+                    <i data-lucide="clock"></i>
+                </div>
+                <h3>Office Hours</h3>
+                <p>Monday - Friday<br>8:00 AM - 5:00 PM<br>SAST</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section">
+    <div class="container">
+        <div class="contact-form-wrapper">
+            <div class="contact-form-header">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+
+            <form id="contact-form" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Get Involved Section -->
+<section class="get-involved-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Get Involved</h2>
+            <p>There are many ways you can support our mission and make a difference in the lives of young people.</p>
+        </div>
+
+        <div class="get-involved-grid">
+            <!-- Become a Mentor Card -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="card-title">Become a Mentor</h3>
+                    <p class="card-description">Share your knowledge and experience by mentoring a student. Help guide
+                        the next generation of leaders.</p>
+                    <a href="#contact-form" class="card-link">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Make a Donation Card -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3 class="card-title">Make a Donation</h3>
+                    <p class="card-description">Your financial support helps us provide scholarships, resources, and
+                        programs to students in need.</p>
+                    <a href="#contact-form" class="card-link">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Partner With Us Card -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i data-lucide="handshake"></i>
+                    </div>
+                    <h3 class="card-title">Partner With Us</h3>
+                    <p class="card-description">Collaborate with us to create lasting impact. We welcome partnerships
+                        with organizations and businesses.</p>
+                    <a href="#contact-form" class="card-link">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Student Image Section -->
+<section class="contact-image-section">
+    <div class="container">
+        <div class="contact-image-wrapper">
+            <img src="{{ url_for('static', filename='images/students-at-school.jpg') }}" alt="Students at school">
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter CTA Section -->
+<section class="newsletter-cta-section">
+    <div class="container">
+        <div class="newsletter-cta-content">
+            <div class="newsletter-header">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter to receive the latest news, updates, and success stories from our
+                    foundation.</p>
+            </div>
+
+            <form class="newsletter-form">
+                <div class="newsletter-input-group">
+                    <input type="email" placeholder="Enter your email address" required
+                        aria-label="Email address for newsletter">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+{% endblock %}

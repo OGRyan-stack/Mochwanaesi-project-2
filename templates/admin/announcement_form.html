@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if announcement %}Edit{% else %}Add{% endif %} Announcement{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div>
+        <h1>{% if announcement %}Edit{% else %}Add New{% endif %} Announcement</h1>
+        <p>{% if announcement %}Update announcement details{% else %}Create a new announcement{% endif %}</p>
+    </div>
+    <a href="{{ url_for('admin_announcements') }}" class="btn-secondary">
+        <i data-lucide="arrow-left"></i>
+        Back to List
+    </a>
+</div>
+
+<div class="form-container">
+    <form method="POST" enctype="multipart/form-data" class="admin-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="title">Title *</label>
+                <input type="text" id="title" name="title" value="{{ announcement.title if announcement else '' }}"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category *</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Programs" {% if announcement and announcement.category=='Programs' %}selected{% endif
+                        %}>Programs</option>
+                    <option value="Events" {% if announcement and announcement.category=='Events' %}selected{% endif %}>
+                        Events</option>
+                    <option value="News" {% if announcement and announcement.category=='News' %}selected{% endif %}>News
+                    </option>
+                    <option value="Success Stories" {% if announcement and announcement.category=='Success Stories'
+                        %}selected{% endif %}>Success Stories</option>
+                    <option value="Volunteers" {% if announcement and announcement.category=='Volunteers' %}selected{%
+                        endif %}>Volunteers</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="excerpt">Excerpt *</label>
+            <textarea id="excerpt" name="excerpt" rows="4"
+                required>{{ announcement.excerpt if announcement else '' }}</textarea>
+            <small>Brief description of the announcement</small>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            {% if announcement and announcement.image_url %}
+            <div class="current-image">
+                <img src="{{ announcement.image_url }}" alt="Current image">
+                <p>Current image</p>
+            </div>
+            {% endif %}
+            <input type="file" id="image" name="image" accept="image/*">
+            <small>Allowed formats: PNG, JPG, JPEG, GIF, WEBP (Max 16MB)</small>
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-label">
+                <input type="checkbox" name="featured" {% if announcement and announcement.featured %}checked{% endif
+                    %}>
+                <span>Mark as Featured</span>
+            </label>
+            <small>Featured announcements appear at the top of the page</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                <i data-lucide="save"></i>
+                {% if announcement %}Update{% else %}Create{% endif %} Announcement
+            </button>
+            <a href="{{ url_for('admin_announcements') }}" class="btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

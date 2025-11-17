@@ -1,0 +1,55 @@
+[
+  {
+    "id": "staff-001",
+    "name": "Dr. Oarabile Mochanaesi",
+    "title": "Chief Executive Director",
+    "role": "leadership",
+    "department": null,
+    "bio": "the leader test",
+    "image_url": "/static/images/uploads/staff_20251116_132045_WhatsApp-Image-2024-09-20-at-15.53.40_1a67efc6.jpg",
+    "email": "Oarabile@mochwanaesi.org.za",
+    "linkedin_url": "https://linkedin.com/in/Oarabile"
+  },
+  {
+    "id": 1,
+    "name": "Ms. Gaofodisi.jpg",
+    "title": "Head of the Tutoring Committee",
+    "bio": "Serves as the head of the Tutoring Committee for the Mochwanaesi Foundation, where she leads efforts to provide effective academic support to learners. In addition to her leadership role, she is also a mentor.\r\n\r\n",
+    "role": "leadership",
+    "email": "",
+    "linkedin_url": "",
+    "image_url": "/static/images/uploads/staff_20251116_094740_Ms._Gaofodisi.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ms. Orapeleng",
+    "title": "Tutor",
+    "bio": "Tutor",
+    "role": "program_staff",
+    "email": "",
+    "linkedin_url": "",
+    "image_url": "/static/images/uploads/staff_20251116_131716_Ms._Orapeleng.jpg",
+    "department": ""
+  },
+  {
+    "id": 3,
+    "name": "Mr. Makhutle",
+    "title": "Treasurer of the Mochwanaesi Foundation",
+    "bio": "Serves as the Treasurer of the Mochwanaesi Foundation, he also acts as the head of the Finance Committee, overseeing budgeting, financial planning, and fund allocation. In addition to his financial duties, Mr. Makhutle is also a tutor and mentor",
+    "role": "leadership",
+    "email": "",
+    "linkedin_url": "",
+    "image_url": "/static/images/uploads/staff_20251116_161245_Mr._Makhutle.jpg"
+  },
+  {
+    "id": 4,
+    "name": "A.msila",
+    "title": "Tutor",
+    "bio": "The beautiful learning thin about learning is that no one can take it away from you",
+    "role": "program_staff",
+    "email": "",
+    "linkedin_url": "",
+    "image_url": "/static/images/uploads/staff_20251116_161550_A.msila.jpg",
+    "department": ""
+  }
+]

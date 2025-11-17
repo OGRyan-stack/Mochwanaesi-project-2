@@ -1,0 +1,177 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ page_name }} Images{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div>
+        <h1>{{ page_name }} Images</h1>
+        <p>Manage images for {{ page_name }}</p>
+    </div>
+    <div style="display: flex; gap: var(--spacing-2);">
+        <a href="{{ url_for('admin_images') }}" class="btn-secondary">
+            <i data-lucide="arrow-left"></i>
+            Back to Gallery
+        </a>
+        <button onclick="document.getElementById('upload-form').style.display='block'" class="btn-primary">
+            <i data-lucide="upload"></i>
+            Upload Image
+        </button>
+    </div>
+</div>
+
+<!-- Upload Form (Hidden by default) -->
+<div id="upload-form" class="upload-form" style="display: none;">
+    <div class="upload-card">
+        <div class="upload-header">
+            <h3>Upload Image for {{ page_name }}</h3>
+            <button onclick="document.getElementById('upload-form').style.display='none'" class="btn-icon">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <form method="POST" action="{{ url_for(upload_endpoint) }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <small>Allowed formats: PNG, JPG, JPEG, GIF, WEBP (Max 16MB)</small>
+                <small>Images will be saved to: /static/images/{{ page_folder }}/</small>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i data-lucide="upload"></i>
+                    Upload
+                </button>
+                <button type="button" onclick="document.getElementById('upload-form').style.display='none'"
+                    class="btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit/Replace Form (Hidden by default) -->
+<div id="edit-form" class="upload-form" style="display: none;">
+    <div class="upload-card">
+        <div class="upload-header">
+            <h3>Replace Image</h3>
+            <button onclick="closeEditModal()" class="btn-icon">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <form method="POST" action="{{ url_for(edit_endpoint) }}" enctype="multipart/form-data" id="edit-image-form">
+            <input type="hidden" id="edit-filename" name="old_filename">
+
+            <div class="form-group">
+                <label>Current Image</label>
+                <div class="current-image-preview">
+                    <img id="current-image-preview" src="" alt="Current image"
+                        style="max-width: 100%; max-height: 200px; border-radius: var(--radius-md);">
+                </div>
+                <p id="current-filename"
+                    style="color: var(--gray-600); font-size: var(--font-size-sm); margin-top: var(--spacing-2);"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="new-image">Select New Image</label>
+                <input type="file" id="new-image" name="new_image" accept="image/*" required>
+                <small>Allowed formats: PNG, JPG, JPEG, GIF, WEBP (Max 16MB)</small>
+                <small><strong>Note:</strong> This will replace the existing image file</small>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i data-lucide="save"></i>
+                    Replace Image
+                </button>
+                <button type="button" onclick="closeEditModal()" class="btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Info Box -->
+<div class="info-box">
+    <i data-lucide="info"></i>
+    <div>
+        <strong>Image Location:</strong> /static/images/{{ page_folder }}/
+        <br>
+        <strong>Usage:</strong> These images are specifically for the {{ page_name }}
+    </div>
+</div>
+
+<!-- Images Grid -->
+<div class="images-grid">
+    {% for image in images %}
+    <div class="image-card">
+        <div class="image-preview">
+            <img src="{{ image.url }}" alt="{{ image.filename }}">
+        </div>
+        <div class="image-info">
+            <p class="image-filename" title="{{ image.filename }}">{{ image.filename }}</p>
+            <p class="image-meta">
+                <span>{{ (image.size / 1024) | round(1) }} KB</span>
+                <span>{{ image.modified }}</span>
+            </p>
+        </div>
+        <div class="image-actions">
+            <button onclick="copyToClipboard('{{ image.url }}')" class="btn-icon btn-icon-primary" title="Copy URL">
+                <i data-lucide="copy"></i>
+            </button>
+            <button onclick="openEditModal('{{ image.filename }}', '{{ image.url }}')"
+                class="btn-icon btn-icon-secondary" title="Replace Image">
+                <i data-lucide="edit"></i>
+            </button>
+            <form method="POST" action="{{ url_for(delete_endpoint, filename=image.filename) }}"
+                style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                <button type="submit" class="btn-icon btn-icon-danger" title="Delete">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i data-lucide="image" style="width: 64px; height: 64px; color: var(--gray-400);"></i>
+        <h3>No images for {{ page_name }} yet</h3>
+        <p>Upload your first image to get started</p>
+        <button onclick="document.getElementById('upload-form').style.display='block'" class="btn-primary">
+            <i data-lucide="upload"></i>
+            Upload Image
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.innerHTML = '<i data-lucide="check-circle"></i><span>URL copied to clipboard!</span>';
+            document.querySelector('.admin-content').insertBefore(alert, document.querySelector('.admin-content').firstChild);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 300);
+            }, 2000);
+        });
+    }
+
+    function openEditModal(filename, imageUrl) {
+        document.getElementById('edit-filename').value = filename;
+        document.getElementById('current-image-preview').src = imageUrl;
+        document.getElementById('current-filename').textContent = 'Current: ' + filename;
+        document.getElementById('edit-form').style.display = 'block';
+        lucide.createIcons();
+    }
+
+    function closeEditModal() {
+        document.getElementById('edit-form').style.display = 'none';
+        document.getElementById('edit-image-form').reset();
+    }
+</script>
+{% endblock %}

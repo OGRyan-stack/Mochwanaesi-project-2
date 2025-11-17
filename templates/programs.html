@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}Our Programs - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% set hero_data = {
+'title': 'Our Programs',
+'accent_word': 'Programs',
+'subtitle': 'Comprehensive support designed to empower students at every stage of their educational journey.',
+'show_cta': false,
+'hero_class': 'hero-programs'
+} %}
+{% include 'components/hero.html' with context %}
+
+<!-- Program Detail Sections -->
+{% for program in programs %}
+<section class="program-detail-section {% if loop.index % 2 == 0 %}bg-gray-50{% else %}bg-white{% endif %}">
+    <div class="program-detail-container">
+        {% if loop.index % 2 == 1 %}
+        <!-- Image on left, content on right -->
+        <div class="program-detail-image">
+            <img src="{{ program.image_url }}" alt="{{ program.name }}">
+        </div>
+        <div class="program-detail-content">
+            <div class="program-icon-badge">
+                <i data-lucide="{{ program.icon }}"></i>
+            </div>
+            <h2 class="program-title">{{ program.name }}</h2>
+            <p class="program-tagline">{{ program.tagline }}</p>
+            <p class="program-description">{{ program.description }}</p>
+
+            <h3 class="program-features-heading">Program Features</h3>
+            <ul class="program-features-list">
+                {% for feature in program.features %}
+                <li class="program-feature-item">
+                    <i data-lucide="check" class="feature-check-icon"></i>
+                    <span>{{ feature }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <!-- Content on left, image on right -->
+        <div class="program-detail-content">
+            <div class="program-icon-badge">
+                <i data-lucide="{{ program.icon }}"></i>
+            </div>
+            <h2 class="program-title">{{ program.name }}</h2>
+            <p class="program-tagline">{{ program.tagline }}</p>
+            <p class="program-description">{{ program.description }}</p>
+
+            <h3 class="program-features-heading">Program Features</h3>
+            <ul class="program-features-list">
+                {% for feature in program.features %}
+                <li class="program-feature-item">
+                    <i data-lucide="check" class="feature-check-icon"></i>
+                    <span>{{ feature }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="program-detail-image">
+            <img src="{{ program.image_url }}" alt="{{ program.name }}">
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endfor %}
+
+<!-- Program Benefits Section -->
+<section class="program-benefits-section">
+    <div class="program-benefits-container">
+        <h2 class="section-heading">Why Join Our Programs?</h2>
+        <p class="section-subtitle">The benefits of participating in our comprehensive educational programs</p>
+
+        <div class="card card-benefits">
+            <div class="card-content">
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Personalized Support</h4>
+                            <p class="benefit-description">Receive one-on-one guidance tailored to your unique needs and
+                                goals</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Expert Mentors</h4>
+                            <p class="benefit-description">Learn from experienced professionals and industry leaders</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Academic Excellence</h4>
+                            <p class="benefit-description">Improve your grades and develop strong study skills</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Career Readiness</h4>
+                            <p class="benefit-description">Build professional skills and prepare for the workplace</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Networking Opportunities</h4>
+                            <p class="benefit-description">Connect with peers, mentors, and potential employers</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i data-lucide="check-circle" class="benefit-check"></i>
+                        <div class="benefit-content">
+                            <h4 class="benefit-title">Ongoing Support</h4>
+                            <p class="benefit-description">Access resources and guidance throughout your educational
+                                journey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Eligibility Section -->
+<section class="eligibility-section">
+    <div class="eligibility-container">
+        <div class="card card-eligibility">
+            <div class="card-content">
+                <div class="eligibility-icon">
+                    <i data-lucide="user-check"></i>
+                </div>
+                <h2 class="eligibility-heading">Who Can Apply?</h2>
+                <p class="eligibility-intro">Our programs are designed for motivated students who meet the following
+                    criteria:</p>
+
+                <ul class="eligibility-list">
+                    <li class="eligibility-item">
+                        <i data-lucide="check-circle" class="eligibility-check"></i>
+                        <span>Currently enrolled in high school or university in South Africa</span>
+                    </li>
+                    <li class="eligibility-item">
+                        <i data-lucide="check-circle" class="eligibility-check"></i>
+                        <span>Demonstrated commitment to academic excellence and personal growth</span>
+                    </li>
+                    <li class="eligibility-item">
+                        <i data-lucide="check-circle" class="eligibility-check"></i>
+                        <span>From an underserved community or facing financial barriers to education</span>
+                    </li>
+                    <li class="eligibility-item">
+                        <i data-lucide="check-circle" class="eligibility-check"></i>
+                        <span>Willing to actively participate in program activities and workshops</span>
+                    </li>
+                    <li class="eligibility-item">
+                        <i data-lucide="check-circle" class="eligibility-check"></i>
+                        <span>Able to provide academic transcripts and a letter of recommendation</span>
+                    </li>
+                </ul>
+
+                <p class="eligibility-note">
+                    <i data-lucide="info"></i>
+                    <span>Don't meet all criteria? We encourage you to apply anyway. We review each application
+                        holistically and consider individual circumstances.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application CTA Section -->
+<section class="cta-section cta-dark">
+    <div class="cta-container">
+        <h2 class="cta-heading">Ready to Transform Your Future?</h2>
+        <p class="cta-description">
+            Join hundreds of students who have already benefited from our programs. Applications are reviewed on a
+            rolling basis throughout the year.
+        </p>
+        <div class="cta-buttons">
+            <a href="/contact" class="btn-primary btn-lg">Apply Now</a>
+            <a href="/contact" class="btn-secondary btn-lg">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}Announcements - Mochwanaesi Foundation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% set title = "Latest Announcements" %}
+{% set subtitle = "Stay informed about our programs, events, and success stories" %}
+{% include 'components/hero.html' with context %}
+
+<!-- Featured Announcements Section -->
+{% if featured_announcements %}
+<section class="section featured-announcements-section">
+    <div class="container">
+        <h2 class="section-heading">Featured Announcements</h2>
+        <div class="featured-announcements-grid">
+            {% for announcement in featured_announcements %}
+            <div class="card card-featured announcement-card" data-category="{{ announcement.category }}">
+                <div class="card-image">
+                    <img src="{{ announcement.image_url }}" alt="{{ announcement.title }}">
+                    <span class="card-badge badge-featured">Featured</span>
+                </div>
+                <div class="card-content">
+                    <div class="announcement-meta">
+                        <span class="badge badge-category badge-{{ announcement.category.lower().replace(' ', '-') }}">
+                            {{ announcement.category }}
+                        </span>
+                        <span class="announcement-date">
+                            <i data-lucide="calendar"></i>
+                            {{ announcement.date[:10] }}
+                        </span>
+                    </div>
+                    <h3 class="card-title">{{ announcement.title }}</h3>
+                    <p class="card-description">{{ announcement.excerpt }}</p>
+                    <a href="#" class="btn-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Category Filter Buttons Section -->
+<section class="section filter-section">
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all" aria-pressed="true">
+                All Announcements
+            </button>
+            <button class="filter-btn" data-category="Programs" aria-pressed="false">
+                Programs
+            </button>
+            <button class="filter-btn" data-category="Events" aria-pressed="false">
+                Events
+            </button>
+            <button class="filter-btn" data-category="News" aria-pressed="false">
+                News
+            </button>
+            <button class="filter-btn" data-category="Success Stories" aria-pressed="false">
+                Success Stories
+            </button>
+            <button class="filter-btn" data-category="Volunteers" aria-pressed="false">
+                Volunteers
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Announcements List Section -->
+<section class="section announcements-list-section">
+    <div class="container">
+        <div id="announcements-list" class="announcements-list">
+            {% for announcement in all_announcements %}
+            <div class="announcement-card announcement-list-item" data-category="{{ announcement.category }}">
+                <div class="announcement-list-image">
+                    <img src="{{ announcement.image_url }}" alt="{{ announcement.title }}">
+                </div>
+                <div class="announcement-list-content">
+                    <div class="announcement-meta">
+                        <span class="badge badge-category badge-{{ announcement.category.lower().replace(' ', '-') }}">
+                            {{ announcement.category }}
+                        </span>
+                        <span class="announcement-date">
+                            <i data-lucide="calendar"></i>
+                            {{ announcement.date[:10] }}
+                        </span>
+                    </div>
+                    <h3 class="announcement-list-title">{{ announcement.title }}</h3>
+                    <p class="announcement-list-excerpt">{{ announcement.excerpt }}</p>
+                    <a href="#" class="btn-outline btn-sm">Learn More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Subscription Section -->
+<section class="section newsletter-section">
+    <div class="container">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2 class="newsletter-heading">Stay Updated</h2>
+                <p class="newsletter-description">
+                    Subscribe to our newsletter to receive the latest announcements, program updates, and success
+                    stories directly in your inbox.
+                </p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="newsletter-input-group">
+                    <input type="email" class="form-input newsletter-input" placeholder="Enter your email address"
+                        required aria-label="Email address for newsletter">
+                    <button type="submit" class="btn-primary newsletter-btn">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/announcements.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if staff_member %}Edit{% else %}Add{% endif %} Staff Member{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div>
+        <h1>{% if staff_member %}Edit{% else %}Add New{% endif %} Staff Member</h1>
+        <p>{% if staff_member %}Update staff member details{% else %}Add a new team member{% endif %}</p>
+    </div>
+    <a href="{{ url_for('admin_staff') }}" class="btn-secondary">
+        <i data-lucide="arrow-left"></i>
+        Back to List
+    </a>
+</div>
+
+<div class="form-container">
+    <form method="POST" enctype="multipart/form-data" class="admin-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" value="{{ staff_member.name if staff_member else '' }}"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Job Title *</label>
+                <input type="text" id="title" name="title" value="{{ staff_member.title if staff_member else '' }}"
+                    required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="role">Role *</label>
+                <select id="role" name="role" required onchange="toggleDepartmentField(this.value)">
+                    <option value="">Select Role</option>
+                    <option value="leadership" {% if staff_member and staff_member.role=='leadership' %}selected{% endif
+                        %}>Leadership Team</option>
+                    <option value="program_staff" {% if staff_member and staff_member.role=='program_staff' %}selected{%
+                        endif %}>Program Staff</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="department-group"
+                style="display: {% if staff_member and staff_member.role == 'program_staff' %}block{% else %}none{% endif %};">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department"
+                    value="{{ staff_member.department if staff_member and staff_member.department else '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="bio">Biography *</label>
+            <textarea id="bio" name="bio" rows="5" required>{{ staff_member.bio if staff_member else '' }}</textarea>
+            <small>Brief description of the staff member's background and role</small>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ staff_member.email if staff_member else '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="linkedin_url">LinkedIn URL</label>
+                <input type="url" id="linkedin_url" name="linkedin_url"
+                    value="{{ staff_member.linkedin_url if staff_member else '' }}"
+                    placeholder="https://linkedin.com/in/username">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Photo</label>
+            {% if staff_member and staff_member.image_url %}
+            <div class="current-image">
+                <img src="{{ staff_member.image_url }}" alt="Current photo"
+                    style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover;">
+                <p>Current photo</p>
+            </div>
+            {% endif %}
+            <input type="file" id="image" name="image" accept="image/*">
+            <small>Allowed formats: PNG, JPG, JPEG, GIF, WEBP (Max 16MB)</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                <i data-lucide="save"></i>
+                {% if staff_member %}Update{% else %}Add{% endif %} Staff Member
+            </button>
+            <a href="{{ url_for('admin_staff') }}" class="btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function toggleDepartmentField(role) {
+        const departmentGroup = document.getElementById('department-group');
+        if (role === 'program_staff') {
+            departmentGroup.style.display = 'block';
+        } else {
+            departmentGroup.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

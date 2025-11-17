@@ -1,0 +1,269 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Edit {{ program.name }} Image - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>Update {{ program.name }} Image</h1>
+    <p class="admin-subtitle">Upload a new image for this program. It will appear on both the Programs page and Home
+        page.</p>
+    <div class="program-name-badge">
+        <i data-lucide="{{ program.icon }}"></i>
+        <span><strong>Program:</strong> {{ program.name }}</span>
+    </div>
+    <div class="naming-suggestion">
+        <i data-lucide="info"></i>
+        <span>Suggested filename: <code>{{ program.name }}.jpg</code> or <code>{{ program.name }}.png</code></span>
+    </div>
+</div>
+
+<div class="admin-content">
+    <div class="form-container">
+        <div class="current-image-section">
+            <h3>Current Image</h3>
+            <div class="image-preview-large">
+                <img src="{{ program.image_url }}" alt="{{ program.name }}">
+            </div>
+            <p class="image-path"><strong>Path:</strong> <code>{{ program.image_url }}</code></p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" class="admin-form">
+            <div class="form-group">
+                <label for="image" class="form-label">
+                    <i data-lucide="upload"></i>
+                    Select New Image
+                </label>
+                <input type="file" id="image" name="image" accept="image/*" required class="form-control"
+                    onchange="previewImage(event)">
+                <p class="form-help">Accepted formats: JPG, PNG, GIF, WebP (Max 16MB)</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Preview New Image</label>
+                <div class="image-preview-large" id="preview-container" style="display: none;">
+                    <img id="preview-image" src="" alt="Preview">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i data-lucide="save"></i>
+                    Update Image
+                </button>
+                <a href="{{ url_for('admin_programs') }}" class="btn-secondary">
+                    <i data-lucide="x"></i>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+
+    .current-image-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .current-image-section h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 1rem;
+    }
+
+    .image-preview-large {
+        width: 100%;
+        max-height: 400px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-preview-large img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .image-path {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        background: #f9fafb;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #4b5563;
+        word-break: break-all;
+    }
+
+    .image-path code {
+        background: #e5e7eb;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.85rem;
+    }
+
+    .admin-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-label i {
+        width: 18px;
+        height: 18px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #dc2626;
+    }
+
+    .form-help {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background: #dc2626;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #b91c1c;
+    }
+
+    .btn-secondary {
+        background: #f3f4f6;
+        color: #4b5563;
+    }
+
+    .btn-secondary:hover {
+        background: #e5e7eb;
+    }
+
+    .btn-primary i,
+    .btn-secondary i {
+        width: 18px;
+        height: 18px;
+    }
+
+    .program-name-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: #dc2626;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .program-name-badge i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .naming-suggestion {
+        background: #dbeafe;
+        border: 2px solid #3b82f6;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: #1e40af;
+    }
+
+    .naming-suggestion i {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: #3b82f6;
+    }
+
+    .naming-suggestion code {
+        background: #bfdbfe;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        color: #1e3a8a;
+        white-space: nowrap;
+    }
+</style>
+
+<script>
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const previewContainer = document.getElementById('preview-container');
+                const previewImage = document.getElementById('preview-image');
+                previewImage.src = e.target.result;
+                previewContainer.style.display = 'flex';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,1092 @@
+/* ===================================
+   Mobile-First Responsive Design
+   Base styles are for mobile (< 768px)
+   =================================== */
+
+/* ===================================
+   Mobile Styles (Default - < 768px)
+   =================================== */
+
+/* Ensure minimum readable font size on mobile (14px minimum) */
+body {
+    font-size: 14px;
+    min-font-size: 14px;
+}
+
+h1 {
+    font-size: 2rem;
+    /* 32px */
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.75rem;
+    /* 28px */
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.5rem;
+    /* 24px */
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: 1.25rem;
+    /* 20px */
+    line-height: 1.3;
+}
+
+p,
+li,
+span {
+    font-size: 14px;
+    min-font-size: 14px;
+}
+
+/* Mobile Navigation */
+.navbar {
+    padding: var(--spacing-2) 0;
+}
+
+.navbar-container {
+    padding: 0 var(--spacing-3);
+}
+
+.navbar-brand a {
+    font-size: var(--font-size-lg);
+}
+
+.navbar-links {
+    display: none;
+}
+
+.navbar-cta {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile Container */
+.container {
+    padding: 0 var(--spacing-2);
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Mobile Hero */
+.hero {
+    padding: var(--spacing-8) 0 var(--spacing-6);
+}
+
+.hero-title {
+    font-size: 2rem;
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-base);
+}
+
+.hero-buttons {
+    flex-direction: column;
+}
+
+.hero-buttons .btn {
+    width: 100%;
+}
+
+/* Mobile Stats Grid */
+.stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+}
+
+/* Mobile Footer */
+.footer-container {
+    grid-template-columns: 1fr;
+}
+
+.footer-content {
+    grid-template-columns: 1fr;
+}
+
+.footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+}
+
+.admin-login-link {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Mobile Section Spacing */
+.section {
+    padding: var(--spacing-6) 0;
+}
+
+.section-lg {
+    padding: var(--spacing-8) 0;
+}
+
+/* Mobile Text Alignment */
+.section-title,
+.section-heading {
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Mobile Grid Layouts */
+.mission-cards,
+.programs-grid,
+.values-grid,
+.team-preview-grid,
+.staff-grid,
+.get-involved-grid,
+.contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+}
+
+/* Mobile Form Elements */
+.form-row {
+    grid-template-columns: 1fr;
+}
+
+/* Mobile Filter Buttons */
+.filter-buttons {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--spacing-2);
+}
+
+.filter-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+}
+
+/* Mobile Announcement List */
+.announcement-list-item {
+    grid-template-columns: 1fr;
+}
+
+.announcement-list-image {
+    height: 200px;
+}
+
+/* Mobile Newsletter */
+.newsletter-input-group {
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.newsletter-input,
+.newsletter-btn {
+    width: 100%;
+}
+
+/* Mobile Cards */
+.card-body {
+    padding: var(--spacing-3);
+}
+
+/* Ensure images scale properly on mobile */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-image,
+.hero-image,
+.story-image,
+.program-detail-image,
+.announcement-list-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Mobile-specific image heights */
+.card-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.hero-image img,
+.story-image img,
+.program-detail-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* Ensure mobile menu is accessible */
+.mobile-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle i {
+    width: 24px;
+    height: 24px;
+}
+
+.mobile-menu-close {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-close i {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===================================
+   Tablet Styles (768px and up)
+   =================================== */
+
+@media (min-width: 768px) {
+
+    /* Typography */
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        /* 40px */
+    }
+
+    h2 {
+        font-size: 2rem;
+        /* 32px */
+    }
+
+    h3 {
+        font-size: 1.75rem;
+        /* 28px */
+    }
+
+    /* Navigation */
+    .navbar {
+        padding: var(--spacing-3) 0;
+    }
+
+    .navbar-container {
+        padding: 0 var(--spacing-4);
+    }
+
+    .navbar-brand a {
+        font-size: var(--font-size-xl);
+    }
+
+    .navbar-links {
+        display: flex;
+        gap: var(--spacing-1);
+    }
+
+    .nav-link {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-2) var(--spacing-2);
+    }
+
+    .navbar-cta {
+        display: block;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none !important;
+    }
+
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-4);
+        max-width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: var(--spacing-10) 0 var(--spacing-8);
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-6);
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        gap: var(--spacing-3);
+    }
+
+    .hero-buttons .btn {
+        width: auto;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    /* Homepage Sections */
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-6);
+    }
+
+    .mission-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    /* Grid Utilities */
+    .grid-cols-md-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-cols-md-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* Footer */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Cards */
+    .card-body {
+        padding: var(--spacing-4);
+    }
+
+    .card-image {
+        height: 250px;
+    }
+
+    /* Section Spacing */
+    .section {
+        padding: var(--spacing-10) 0;
+    }
+
+    .section-lg {
+        padding: var(--spacing-12) 0;
+    }
+
+    /* Section Titles */
+    .section-title,
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    /* Values and Team Grids */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .team-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    /* Contact and Get Involved Grids */
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .get-involved-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    /* Form Layouts */
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-4);
+    }
+
+    /* Announcement Layouts */
+    .featured-announcements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    .announcement-list-item {
+        grid-template-columns: 300px 1fr;
+        gap: var(--spacing-4);
+    }
+
+    .announcement-list-image {
+        height: 100%;
+        min-height: 200px;
+    }
+
+    /* Newsletter */
+    .newsletter-input-group {
+        flex-direction: row;
+        gap: var(--spacing-3);
+    }
+
+    .newsletter-input {
+        flex: 1;
+    }
+
+    .newsletter-btn {
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    /* Program Detail Sections */
+    .program-detail-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-8);
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+
+    /* Story Section */
+    .story-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-8);
+    }
+
+    /* Mission and Vision */
+    .mission-vision-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-6);
+    }
+
+    /* Impact Stats */
+    .impact-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-8);
+    }
+
+    /* Leadership Grid - Display horizontally on tablet */
+    .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-6);
+    }
+}
+
+/* ===================================
+   Tablet-Only Adjustments (768px to 1023px)
+   =================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* Adjust navigation spacing for tablet */
+    .navbar-brand a {
+        font-size: var(--font-size-lg);
+    }
+
+    .navbar-links {
+        gap: 0;
+    }
+
+    .nav-link {
+        padding: var(--spacing-2);
+        font-size: 13px;
+    }
+
+    /* Adjust hero for tablet */
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    /* Adjust card layouts for better fit */
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Keep mission cards in 2 columns on tablet */
+    .mission-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust stats to 2x2 grid on tablet */
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust footer to 2 columns on tablet */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust values grid to 2 columns on tablet */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Keep contact info in 2 columns on tablet */
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===================================
+   Desktop Styles (1024px and up)
+   =================================== */
+
+@media (min-width: 1024px) {
+
+    /* Typography */
+    h1 {
+        font-size: 3rem;
+        /* 48px */
+    }
+
+    h2 {
+        font-size: 2.25rem;
+        /* 36px */
+    }
+
+    h3 {
+        font-size: 1.875rem;
+        /* 30px */
+    }
+
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-6);
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: var(--spacing-12) 0 var(--spacing-10);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Homepage Sections */
+    .mission-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Grid Utilities */
+    .grid-cols-lg-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-cols-lg-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Navigation */
+    .navbar-container {
+        padding: 0 var(--spacing-6);
+    }
+
+    .navbar-brand a {
+        font-size: var(--font-size-2xl);
+    }
+
+    .navbar-links {
+        gap: var(--spacing-2);
+    }
+
+    .nav-link {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-2) var(--spacing-3);
+    }
+
+    /* Hover Effects (Desktop Only) */
+    .card:hover {
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-4px);
+    }
+
+    .card:hover .card-image {
+        transform: scale(1.05);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* ===================================
+   Large Desktop Styles (1280px and up)
+   =================================== */
+
+@media (min-width: 1280px) {
+
+    /* Container */
+    .container {
+        max-width: 1280px;
+    }
+
+    /* Hero Section */
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+
+    /* Section Spacing */
+    .section-lg {
+        padding: var(--spacing-16) 0;
+    }
+}
+
+/* ===================================
+   Touch Device Optimizations
+   =================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    /* Ensure ALL touch targets are at least 44x44px */
+    .btn,
+    .nav-link,
+    .mobile-nav-link,
+    .card-link,
+    .filter-btn,
+    .social-link,
+    .footer-links a,
+    .contact-link,
+    a.btn-primary,
+    a.btn-secondary,
+    button {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+    }
+
+    /* Specific touch target adjustments */
+    .mobile-menu-toggle,
+    .mobile-menu-close {
+        padding: var(--spacing-3);
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    /* Navigation links */
+    .nav-link {
+        padding: var(--spacing-2) var(--spacing-3);
+    }
+
+    .mobile-nav-link {
+        padding: var(--spacing-3);
+        min-height: 48px;
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+        padding: 0.75rem 1.5rem;
+        min-height: 48px;
+    }
+
+    /* Form inputs */
+    .form-input,
+    .form-textarea,
+    .form-select,
+    .newsletter-input {
+        min-height: 48px;
+        padding: 0.875rem 1rem;
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+
+    /* Card links and buttons */
+    .card-link {
+        padding: var(--spacing-2) var(--spacing-3);
+        min-height: 44px;
+    }
+
+    /* Social links */
+    .social-link {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    /* Footer links */
+    .footer-links a {
+        padding: var(--spacing-2) 0;
+        display: block;
+    }
+
+    /* Remove hover effects on touch devices */
+    .card:hover {
+        transform: none;
+        box-shadow: var(--shadow-md);
+    }
+
+    .card:hover .card-image {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    .btn-primary:hover {
+        transform: none;
+    }
+
+    .social-link:hover {
+        transform: none;
+    }
+
+    /* Add active/tap states for better feedback */
+    .btn:active,
+    .card:active,
+    .filter-btn:active {
+        opacity: 0.8;
+    }
+
+    /* Improve tap feedback */
+    * {
+        -webkit-tap-highlight-color: rgba(220, 38, 38, 0.2);
+    }
+
+    /* Prevent text selection on buttons */
+    .btn,
+    .filter-btn,
+    .mobile-menu-toggle,
+    .mobile-menu-close {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+
+    .navbar,
+    .footer,
+    .btn,
+    .cta-section,
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        color: black;
+    }
+
+    .hero {
+        margin-top: 0;
+    }
+
+    .card {
+        page-break-inside: avoid;
+    }
+}
+
+/* ===================================
+   Reduced Motion
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===================================
+   About Page Responsive Styles
+   =================================== */
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+
+    /* Story Section */
+    .story-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Mission and Vision */
+    .mission-vision-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Values Grid */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Team Preview */
+    .team-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Impact Stats */
+    .impact-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+
+    /* Values Grid */
+    .values-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Team Preview */
+    .team-preview-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Impact Stats */
+    .impact-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ===================================
+   Programs Page Responsive Styles
+   =================================== */
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+
+    /* Program Detail Sections */
+    .program-detail-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+
+    /* Program Title */
+    .program-title {
+        font-size: var(--font-size-5xl);
+    }
+
+    /* Program Tagline */
+    .program-tagline {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+
+/* ===================================
+   Announcements Page Responsive Styles
+   =================================== */
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+
+    /* Featured Announcements Grid */
+    .featured-announcements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Announcement List Item */
+    .announcement-list-item {
+        grid-template-columns: 300px 1fr;
+    }
+
+    .announcement-list-image {
+        height: 100%;
+        min-height: 250px;
+    }
+
+    /* Newsletter Input Group */
+    .newsletter-input-group {
+        flex-direction: row;
+    }
+
+    .newsletter-btn {
+        flex-shrink: 0;
+    }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+
+    /* Announcement List Image */
+    .announcement-list-image {
+        width: 350px;
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+        justify-content: center;
+    }
+}
+
+/* ===================================
+   Contact Page Responsive Styles
+   =================================== */
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+
+    /* Contact Info Grid */
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Form Row */
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Get Involved Grid */
+    .get-involved-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Newsletter Input Group */
+    .newsletter-cta-section .newsletter-input-group {
+        flex-direction: row;
+    }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+
+    /* Contact Info Grid */
+    .contact-info-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Get Involved Grid */
+    .get-involved-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Contact Form Wrapper */
+    .contact-form-wrapper {
+        padding: var(--spacing-12);
+    }
+}
+
+/* ===================================
+   Staff Page Responsive Styles
+   =================================== */
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+
+    /* Values Grid */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Leadership Grid - Display horizontally on tablet */
+    .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Staff Grid */
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+
+    /* Values Grid */
+    .values-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Leadership Grid - Display 3 columns on desktop */
+    .leadership-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Staff Grid */
+    .staff-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
